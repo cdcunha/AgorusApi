@@ -14,5 +14,10 @@ namespace AgorusApi.Dto
         public string ContentType { get; set; }
 
         public List<FileHistoryDto> FileHistoryModels { get; set; }
+
+        public FileDto()
+        {
+            FileHistoryModels = new List<FileHistoryDto>();
+        }
     }
 }
