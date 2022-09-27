@@ -21,8 +21,13 @@ Simple file storage API service
   * Run it using Visual Studio or 
   * Install the API in the ISS and run it directly in your browser as configured in the ISS (see [details](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?view=aspnetcore-6.0)).
 * To open the swagger use the url like this (change if necessary as configured in ISS, if it's the case): ```https://localhost:7175/swagger```
+* The solution is divided into 3 parts:
+  * **AgorusApi**: this is the Web API. It uses the service to store the files in the database
+  * **AgorusService**: Service that calls the repository and has all business rules
+  * **AgorusCrossSharing**: contains DTOs and Models to share between projects
+  * **AgorusRepository**: access the database
 * The project uses SQLite and the database file it'll be installed in the LocalApplicationData. If in Windows OS for example: ```C:\Users\UserName\AppData\Local\Agorus\Agorus.db```
-* The database filename can be changed im appsettings.json:
+* The database filename can be changed in appsettings.json:
 ```json
   "DbConfig": {
     "FileName": "Agorus.db"
