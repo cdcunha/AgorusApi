@@ -1,6 +1,7 @@
 ﻿using AgorusApi.Context.Helper;
 using AgorusApi.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace AgorusApi.Context
@@ -12,7 +13,7 @@ namespace AgorusApi.Context
 
         public string DbPath { get; }
 
-        public AppDbContext(IOptions<DbConfigOptions> dbConfigOptions)
+        public AppDbContext(IOptions<DbConfigOptions> dbConfigOptions, ILogger<AppDbContext> logger)
         {
             var dbFileName = string.IsNullOrEmpty(dbConfigOptions.Value.FileName) ? "Agorus.db" : dbConfigOptions.Value.FileName;
 

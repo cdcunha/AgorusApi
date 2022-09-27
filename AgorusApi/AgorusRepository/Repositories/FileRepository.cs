@@ -1,18 +1,17 @@
 ﻿using AgorusApi.Context;
 using AgorusApi.Model;
+using AgorusRepository.Repositories;
 using AgorusService.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 
 namespace AgorusService.Repositories
 {
-    public class FileRepository : IFileRepository
-    {
-        private readonly AppDbContext _context;
-
-        public FileRepository(AppDbContext context)
+    public class FileRepository : BaseRepository, IFileRepository
+    {   
+        public FileRepository(AppDbContext context) : base(context)
         {
-            _context = context;
+            
         }
 
         public async Task<IEnumerable<FileModel>> ReadAllWithDetails()

@@ -1,17 +1,16 @@
 ﻿using AgorusApi.Context;
 using AgorusApi.Model;
+using AgorusRepository.Repositories;
 using AgorusService.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace AgorusService.Repositories
 {
-    public class FileHistoryRepository : IFileHistoryRepository
+    public class FileHistoryRepository : BaseRepository, IFileHistoryRepository
     {
-        private readonly AppDbContext _context;
-
-        public FileHistoryRepository(AppDbContext context)
+        public FileHistoryRepository(AppDbContext context) : base(context)
         {
-            _context = context;
+
         }
 
         public async Task<FileHistoryModel?> ReadById(int? id, int? historyId)
